@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <section className="App-content">
-        <h1>App</h1>
         <Link to="/">
           <img className='App-logo' alt='Giffy logo' src='logo192.png'/>
         </Link>

@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 import getGifs from '../../services/getGifs'
 import Gif from '../Gif'
 
-export default function ListOfGifs ({params}) {
+export default function ListOfGifs ({keyword}) {
     const [gifs, setGifs] = useState([])
     const [loading, setLoading] = useState(false)
-    const {keyword} = params
-
+    
     useEffect(function () {
         setLoading(true)
         getGifs({keyword})
