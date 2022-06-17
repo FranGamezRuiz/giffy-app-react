@@ -3,12 +3,12 @@ import { useState } from 'react'
 import {Link, useLocation} from 'wouter'
 import ListOfGifs from '../../components/ListOfGifs'
 import useGifs from '../../hooks/useGifs'
+import Category from '../../components/Category'
 
 const POPULAR_GIFS =  ["pandas", "rick and morty", "gatos"]
 export default function Home() {
     const [keyword, setKeyword] = useState('')
     const [path, pushLocation] = useLocation()
-    
     const {loading, gifs} = useGifs()
 
     const handleSubmit = evt => {
@@ -23,20 +23,26 @@ export default function Home() {
 
     return (
         <>
-            <h3 className='App-title'>Los gifs más populares</h3>
             <form onSubmit={handleSubmit}>
+                <button>Buscar</button> 
                 <input placeholder='Search a gif here...' onChange={handleChange} type='text' value={keyword}></input>
-                <button>Buscar</button>
             </form>
-            <h3>Última búsqueda</h3>
-            <ListOfGifs gifs={gifs} />
-            <ul>
-                {POPULAR_GIFS.map((popularGif) => (
-                    <li key={popularGif} >
-                        <Link to={`/search/${popularGif}`}>Gifs de {popularGif}</Link>
-                    </li>
-                ))}
-            </ul>
+            <div className="App-main">
+                <div className="App-results">
+                    <h3 className="App-title">Última búsqueda</h3>
+                    <ListOfGifs gifs={gifs} />
+                </div>
+                <div className="App-category">
+                    <Category
+                        name="Categorias populares"
+                        options={POPULAR_GIFS}
+                    />
+                    <Category
+                        name="Mascotas"
+                        options={['Perros', 'Gatos', 'Hamster']}
+                    />
+                </div>
+            </div>
         </>
     )
 }
