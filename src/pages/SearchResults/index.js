@@ -2,7 +2,7 @@ import debounce from 'just-debounce-it'
 import { useCallback, useEffect, useRef } from 'react'
 import ListOfGifs from '../../components/ListOfGifs'
 import Spinner from '../../components/Spinner'
-import useGifs from '../../hooks/useGifs'
+import {useGifs} from '../../hooks/useGifs'
 import useNearScreen from '../../hooks/useNearScreen'
 
 export default function SearchResults ({params}) {
